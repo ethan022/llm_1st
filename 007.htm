@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3> 설문조사</h3>
+    <h4> 나이와 원하는 강의를 알려주세요</h4>
+    <h5> 나이</h5>  
+    <input type="radio" name="age" value="20대"> 20대
+    <input type="radio" name="age" value="30대"> 30대
+    <br>
+    <h5> 강의</h5>
+    <input type="checkbox" name="강의" value="국어"> 국어
+    <input type="checkbox" name="강의" value="수학"> 수학
+    <input type="checkbox" name="강의" value="영어"> 영어
+    <br>
+<form method="post" action="/login">
+    <label for="uid">사용자 ID</label>
+    <input type="text" id="uid" name="user_id" required>
+    <br>
+    <label for="pw" >비밀번호</label>
+    <input type="password" id="pw" name="pw" required>
+    <br>
+    <button type="submit">로그인</button>
+    <button type="reset">초기화</button>
+<br>
+<h3> 회원가입</h3>
+    <label for="name">이름</label>
+    <input type="text" name="name" required>
+    <br>
+    <label for="email">이메일</label>
+    <input type="text" name="email" required>
+    <br>
+    <label for="uid">아이디</label>
+    <input type="text" name="uid" required>
+    <br>
+    <label for="pw">비밀번호</label>
+    <input type="text" name="pw" required>
+    <br>
+    <label for="birth">생년월일</label>
+    <input type="date" name="birth">
+    <br>
+    <label for="group">소속</label>
+    <input type="select" name="group">
+        <select name="group">
+            <option value=""> --선택하세요-- </option>
+            <option value="학생" selected>학생</option>
+            <option value="외부인" selected>외부인</option>
+            <option value="교수" selected>교수</option>
+        </select>
+        <br>
+        <label for="역할">역할</label>
+        <input type="radio" name="role" value="promotion"> 홍보
+        <input type="radio" name="role" value="participation"> 참여
+        <input type="radio" name="role" value="other"> 기타
+    <br>
+    <label for="interest">알게된 경로</label>
+    <input type="checkbox" name="interest" value="sns"> sns
+    <input type="checkbox" name="interest" value="지인소개"> 지인소개
+    <input type="checkbox" name="interest" value="기타"> 기타
+    <br>
+    <h3> 온라인 문의표</h3>
+    <label for="유형">문의 유형</label>
+    <input type="select" name ="유형">
+        <select name = "유형">
+            <option value="">--선택--</option>
+            <option value="불만">불만</option>
+            <option value="질문">질문</option>
+        </select>
+        <br>
+    <label for ="심각도">심각도</label>
+    <input type="radio" name ="심각도" value="낮음"> 낮음
+    <input type="radio" name ="심각도" value="보통"> 보통
+    <input type="radio" name ="심각도" value="높음"> 높음
+    <br>
+    <label for="date">발생일시</label>
+    <input type="date" name = "date">
+    <br>
+    <label for="file">첨부파일</label>
+    <textarea name="file" rows="4" cols="50"></textarea>
+    <br>
+    <button type="submit">문의 접수</button>
+</form>
+</body>
+</html>
