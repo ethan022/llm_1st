@@ -25,7 +25,7 @@
   <title>3일차 연습문제 — HTML 기초 (2)</title>
 </head>
 
-<body>
+<input>
   <h2>3일차 연습문제 — HTML 기초 (2)</h2>
   <p>각 문제 제목 아래 <b>TODO 주석 자리</b>에 코드를 작성하세요.
     브라우저로 열어 두고 저장할 때마다 새로고침(F5)하며 확인합니다.</p>
@@ -51,8 +51,30 @@
   -->
   <h3>문제 1 — 이번 주 지출 내역</h3>
   <!-- TODO: 여기에 4행 3열 표를 작성하세요 -->
-
-  <hr>
+<table border="1">
+   <tr>
+   <th>날짜</th>
+   <th>내용</th>
+   <th>금액</th>
+   </tr>
+   <tr>
+      <td>8월 4일</td>
+      <td>교통비</td>
+      <td>2800원</td>
+   </tr>
+   <tr>
+      <td>8월 5일</td>
+      <td>카페 아메리카노</td>
+      <td>4500원</td>
+   </tr>
+   <tr>
+      <td>8월 3일</td>
+      <td>점심 도시락</td>
+      <td>7000원</td>
+   </tr>
+   <td></td>
+</table>
+<hr>
 
   <!-- ═══════════════════════════════════════════════
        문제 2. 미용실 예약 조회 폼  (기본)
@@ -76,7 +98,15 @@
   -->
   <h3>문제 2 — 미용실 예약 조회 폼</h3>
   <!-- TODO: 여기에 예약 조회 폼을 작성하세요 -->
-
+<form action="/api.reservation", method="post">
+<label for="rv-name">예약자 이름</label>
+<input id="rv-name" name="rvName" type="text" placeholder="예: 김한결">
+<br>
+<label for="rv-pin">전화번호 뒤 4자리</label>
+<input name="rvPin" id="rv-pin" type="password">
+<br>
+<button type="submit">예약조회</button>
+</form>
   <hr>
 
   <!-- ═══════════════════════════════════════════════
@@ -101,7 +131,31 @@
   -->
   <h3>문제 3 — 주간 시간표 (셀 병합)</h3>
   <!-- TODO: 여기에 셀 병합 표를 작성하세요 -->
-
+<table border="1">
+<tr>
+   <th colspan="2">구분</th>
+   <th>과목</th>
+   <th>강의실</th>
+</tr>
+<tr>
+   <td rowspan="2">월요일 </td>
+   <td>1~2교시</td>
+   <td>HTML 기초</td>
+   <td rowspan="2">301호</td>
+   <tr>
+      <td>3~4교시</td>
+      <td>HTML 실습</td>
+   </tr>
+   <tr>
+   <td rowspan="2">화요일 </td>
+   <td>1~2교시</td>
+   <td>css 기초</td>
+   <td rowspan="2">301호</td>
+   <tr>
+      <td>3~4교시</td>
+      <td>ccs 실습</td>
+   </tr>
+</table>
   <hr>
 
   <!-- ═══════════════════════════════════════════════
@@ -133,7 +187,25 @@
   -->
   <h3>문제 4 — 피자 주문 폼</h3>
   <!-- TODO: 여기에 주문 폼을 작성하세요 -->
-
+<form action="/api/order",method="post">
+<label for="od-name">주문자 이름</label>
+<input type="text" id="od-name" name="od-name" required placeholder="예:김한결">
+<laber for="od-date">받을 날짜</laber>
+<br>
+<input type="date" id="od-date" name="od-date"><br>
+크기
+<label><input type="radio" name="size" value="L" checked>라지</label>
+<label><input type="radio" name="size" value="M">미디움</label>
+<label><input type="radio" name="size" value="S">스몰</label>
+<br>
+추가토핑
+<label><input type="checkbox" name="topping" value="pepperoni" checked>페퍼로니</label>
+<label><input type="checkbox" name="topping" value="olive">올리브</label>
+<label><input type="checkbox" name="topping" value="pineapple">파인애플</label>
+<label><input type="checkbox" name="topping" value="cheese">치즈</label>
+<br>
+<button type="submit">주문하기</button>
+</form>
   <hr>
 
   <!-- ═══════════════════════════════════════════════
@@ -164,7 +236,30 @@
   -->
   <h3>문제 5 — 과제 제출 폼</h3>
   <!-- TODO: 여기에 과제 제출 폼을 작성하세요 -->
+<form action="/api/assignment" method="post">
+   <fieldset>
+<legend>과제 제출</legend>
+<label for="as-subject">과목 선택</label>
+<select id="as-subject" name="subject">
+   <optgroup label="전공">
+      <option value="web" selected>웹 프로그래밍</option>
+      <option value="db">데이터베이스</option>
+      </optgroup>
+   <optgroup label="교양">
+      <option value="writing">글쓰기</option>
+      <option value="career" disabled>진로 탐색(제출기간 종료)</option>
+   </optgroup>
+   </select>
+   <br>
+   <textarea name="comment" row="4" placeholder="조교에게 남길 말"></textarea>
+<br>
+<label for="as-file">과제 파일</label>
+<input type="file" id="as-file" name=as-file accept=".pdf,.docx">
+<br>
+<button type="submit">제출</button> <button type="reset">다시쓰기</button>
 
+</fieldset>
+</form>
   <hr>
 
   <!-- ═══════════════════════════════════════════════
@@ -192,7 +287,26 @@
   -->
   <h3>문제 6 — 시맨틱 골격: 개인 블로그</h3>
   <!-- TODO: 여기에 시맨틱 태그 골격을 작성하세요 -->
-
+<header>한결의 개발 일지</header>
+<nav>
+<a href="#-">개발</a> 
+<a href="#-">일상</a>
+<a href="#-">책</a>
+</nav> 
+<main>
+   <section>
+      <article>
+         <h4>HTML 2일차</h4>
+         <p>어렵다</p>
+      </article>
+      <article>
+         <h4>페이지 후기</h4>
+         <p>쉽다</p>
+      </article>
+   </section>
+   <aside>공지: 8월 8일(토) 댓글 기능 점검</aside>
+</main>
+<footer>&copy; 2026 한결의 개발 일지</footer>
   <hr>
 
   <!-- ═══════════════════════════════════════════════
@@ -236,6 +350,47 @@
   -->
   <h3>문제 7 — [도전] 스터디 모집 신청 페이지</h3>
   <!-- TODO: 여기에 header + section 2개 + footer 를 작성하세요 -->
+<header>
+   <h1>웹 개발 스터디 모집</h1>
+   <p>팀원을 모집합니다</p>
+   <section> 
+      <h2>신청서</h2>
+      <form action="/api/Study" method="post"></form>
+<fieldset>
+<label for="st-name">이름</label>
+<input type="text" id="st-name" name="st-name" required>
+<br>
+<label for="st-email">이메일</label>
+<input type="email" id="st-email" name="st-email" required placeholder="예:hello@example.com">
+<br>
+<label for="st-date">참여가능시작일</label>
+<input type="date" id="st-date" name="st-date">
+<br>
+참여요일
+<label for="day"><input type="radio" name="day" value="night" checked>평일 저녁</label>
+<label for="day"><input type="radio" name="day" value="mornig">주말 오전</label>
+</fieldset>
+<fieldset>
+<legend>학습 정보</legend>
+<label for="st-field">관심 분야</label>
+<select id="st-field" name="field">
+<option value="pront" selected>프론트엔드</option>
+<option value="back" name="field">백엔드</option>
+<option value="design" name="field">디자인</option>
+</select>
 
+</fieldset>
+ [fieldset 2 — legend "학습 정보"]
+          · label + select "관심 분야" — for/id "st-field", name="field",
+            option 프론트엔드(selected) / 백엔드 / 디자인
+          · "배운 적 있는 것:" checkbox 3개 — name="learned",
+            HTML / CSS / JavaScript, label로 감싸기
+          · label "하고 싶은 말" + textarea — for/id "st-note", rows="3"
+          · label "포트폴리오 파일" + input type="file" — for/id "st-file",
+            accept=".pdf,image/*"
+      </section>
+   <section></section>
+   <footer></footer>
+</header>
 </body>
 </html>

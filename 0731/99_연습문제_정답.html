@@ -62,7 +62,7 @@
        가고, 스크린 리더가 "이 칸은 예약자 이름"이라고 읽어 줍니다 — 접근성의 기본.
        name은 화면에 아무 영향이 없지만, 3단원에서 서버를 열면 name 없는 값은
        도착하지 않습니다. 지금부터 쓰는 습관을 들입니다. -->
-  <form action="/api/reservation" method="post">
+  <form action="/api/reservation" method="post"></form>
     <label for="rv-name">예약자 이름</label>
     <input type="text" id="rv-name" name="rvName" placeholder="예: 김한결">
     <br>
@@ -70,7 +70,6 @@
     <input type="password" id="rv-pin" name="rvPin">
     <br>
     <button type="submit">예약 조회</button>
-  </form>
 
   <hr>
 
