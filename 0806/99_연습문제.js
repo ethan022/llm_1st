@@ -19,7 +19,7 @@ console.log("===== 문제 1 =====");
 // TODO: 여기에 작성
 const storeName = "행복 편의점";
 let riceBallCount = 68;
-console.log(`${storeName} ${riceBallCount}`);
+
 
 // ═══ 문제 2 ═══ 템플릿 리터럴 [기본]
 // (1) 요구사항: 아래 두 변수를 사용해 백틱(`)과 ${} 로 두 문장을 출력하세요.
@@ -95,6 +95,11 @@ console.log(`입고 후 재고: ${one}`);
 console.log(`판매 후 재고: ${two}`);
 console.log(`반품 후 재고: ${three}`);
 
+stock -= 40;
+console.log(`판매 후 재고 ${stock}`);
+
+stock++;
+console.log(`반품 후 재고 ${stock}`);
 // ═══ 문제 6 ═══ 비교 · 논리 연산자 [응용]
 // (1) 요구사항: 음료 냉장고 채우기 조건을 검사해 true/false 세 줄을 출력하세요.
 //     - 공간 여유: 진열된 음료가 80개 미만인가? (비교 결과를 isSpaceOk 변수에 저장)
