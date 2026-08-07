@@ -19,12 +19,171 @@
   <head>
     <meta charset="UTF-8" />
     <title>4일차 연습문제 — CSS 선택자 · 간단한 속성들</title>
+<<<<<<< HEAD
+
+    <style>
+      /* ── 기본 제공 스타일 (문제 아님 — 수정 금지) ── */
+      body {
+        font-family: "맑은 고딕", "Malgun Gothic", sans-serif;
+        margin: 20px;
+      }
+      section {
+        border-bottom: 1px dashed #ccc;
+        padding: 16px 8px;
+      }
+      h2 {
+        font-size: 17px;
+        color: #333;
+      }
+      .hint-text {
+        color: #888;
+        font-size: 13px;
+      }
+      .inner-box {
+        border: 1px solid #bbb;
+        padding: 6px;
+        margin: 6px 0;
+      }
+
+      /* ═══ 문제 1 ═══ */
+      /* 미리 선언된 규칙입니다. 수정·삭제 금지! (문제 1-2에서 덮어씁니다) */
+      .notice {
+        background-color: gold;
+        padding: 8px;
+      }
+
+      /* 문제 1: 여기에 작성 */
+      h1 {
+        color: #1a3a6e;
+        text-align: center;
+      }
+      .notice {
+        background-color: lightsteelblue;
+      }
+
+      /* ═══ 문제 2 ═══ */
+      /* 문제 2: 여기에 작성 */
+      .ok {
+        background-color: seagreen;
+        color: white;
+      }
+      .warn {
+        background-color: gold;
+      }
+      #critical {
+        background-color: crimson;
+        color: white;
+        font-weight: bold;
+      }
+
+      /* ═══ 문제 3 ═══ */
+      /* 문제 3: 여기에 작성 */
+      .zone-a > p {
+        color: crimson;
+      }
+      .zone-b p {
+        color: darkorange;
+      }
+      li.urgent {
+        font-weight: bold;
+        color: firebrick;
+      }
+
+      /* ═══ 문제 4 ═══ */
+      /* 문제 4: 여기에 작성 */
+      li.now {
+        font-weight: bold;
+      }
+      li.now + li {
+        background-color: skyblue;
+      }
+      li.now ~ li {
+        text-decoration: underline;
+      }
+
+      /* ═══ 문제 5 ═══ */
+      /* 문제 5: 여기에 작성 */
+      .visitor-log > li:nth-child(2n) {
+        background-color: #eee;
+      }
+      .visitor-log > li:first-child {
+        font-weight: bold;
+      }
+      .visitor-log > li:last-child {
+        color: red;
+      }
+      .task-list > li:not([class="done"]) {
+        color: green;
+      }
+
+      /* ═══ 문제 6 ═══ */
+      /* 문제 6: 여기에 작성 */
+      .alarm::before {
+        content: "▲ 경고 ";
+        color: red;
+      }
+      .fyi::after {
+        content: "(신규)";
+        color: blue;
+      }
+      [disabled] {
+        background-color: lightcoral;
+      }
+      [placeholder="도서 번호"] {
+        background-color: lightyellow;
+      }
+
+      /* ═══ 문제 7 ═══ */
+      /* 문제 7: 여기에 작성 */
+      .search-btn:hover {
+        background-color: gold;
+      }
+      .search-btn:active {
+        background-color: crimson;
+        color: white;
+      }
+      .search-input:focus {
+        background-color: lightyellow;
+      }
+
+      /* ═══ 문제 8 [도전] — 5일차 진도(박스모델) 이후 풀기 ═══ */
+      /* 문제 8: 여기에 작성 */
+      .book-card {
+        display: inline-block;
+        width: 240px;
+        border: 2px solid #1971c2;
+        border-radius: 12px;
+        padding: 12px;
+        margin: 8px;
+      }
+      .card-title {
+        height: 36px;
+        line-height: 36px;
+        background-color: #e7f1ff;
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+        border-radius: 8px;
+      }
+      .card-desc {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 문제 1에서 스타일링할 페이지 제목입니다. -->
+    <h1>동네 도서관 안내</h1>
+
+=======
     <link rel="stylesheet" href="./99_연습문제.css" />
   </head>
   <body>
     <!-- 문제 1에서 스타일링할 페이지 제목입니다. -->
     <h1>동네 도서관 안내</h1>
 
+>>>>>>> e6d86ed6d521ad8bfe08c66b593d98435b5d33db
     <!-- ═══ 문제 1 ═══════════════════════════════════════════
     [요구사항]
     1) 태그 선택자로 h1의 글자색을 #1a3a6e 로, 가로 정렬을 가운데로 만드세요.
@@ -228,6 +387,10 @@
         문제 8. [도전] 추천 도서 카드 만들기
         <span class="hint-text">[5일차 진도(박스모델) 이후 풀기]</span>
       </h2>
+<<<<<<< HEAD
+
+=======
+>>>>>>> e6d86ed6d521ad8bfe08c66b593d98435b5d33db
       <div class="book-card">
         <div class="card-title">파이썬 첫걸음</div>
         <p class="card-desc">
