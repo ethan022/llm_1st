@@ -23,6 +23,12 @@
 console.log("===== 워밍업 A =====");
 const steps = [5000, 7200, 4300, 8100, 6400, 3000, 8000];
 // TODO: 여기에 작성
+let sum = 0;
+for (let index = 0; index < steps.length; index++) {
+  sum += steps[index];
+}
+console.log(`합계: ${sum}걸음`);
+console.log(`평균: ${sum / steps.length}걸음`);
 
 // ═══ 워밍업 B ═══ for 안에 if 넣기 [기본]
 // (1) 요구사항: 위 걸음 수 중 "6000걸음 이상인 날"만 골라 출력하세요.
@@ -40,6 +46,14 @@ const steps = [5000, 7200, 4300, 8100, 6400, 3000, 8000];
 console.log("===== 워밍업 B =====");
 const steps2 = [5000, 7200, 4300, 8100, 6400, 3000, 8000];
 // TODO: 여기에 작성
+let day = 0;
+for (let index = 0; index < steps2.length; index++) {
+  if (steps[index] >= 6000) {
+    console.log(`${index + 1}일차: ${steps[index]}걸음`);
+    day += 1;
+  }
+}
+console.log(`목표 달성: ${day}일`);
 
 // ═══ 워밍업 C ═══ while 로 반복 [기본]
 // (1) 요구사항: 로켓 발사 카운트다운을 while 로 출력하세요.
@@ -56,6 +70,15 @@ const steps2 = [5000, 7200, 4300, 8100, 6400, 3000, 8000];
 // (3) 힌트: 섹션12(while - 증감을 직접 챙겨야 함), 섹션10(역순 반복)
 console.log("===== 워밍업 C =====");
 // TODO: 여기에 작성
+let days = 5;
+while (true) {
+  console.log(`${days}`);
+  days -= 1;
+  if (days == 0) {
+    console.log(`발사!`);
+    break;
+  }
+}
 
 // ═══ 워밍업 D ═══ for 의 세 칸을 바꿔 쓰기 [기본]
 // (1) 요구사항: for 소괄호의 세 칸(초기값·조건·증감)을 바꿔 두 가지를 출력하세요.
@@ -101,6 +124,26 @@ console.log("===== 워밍업 D =====");
 console.log("===== 문제 1 =====");
 const scores = [78, 92, 45, 88, 61, 95, 73];
 // TODO: 여기에 작성
+let sum2 = 0;
+let highScore = scores[0];
+let lowScore = scores[0];
+let goodStudent = 0;
+for (let index = 0; index < scores.length; index++) {
+  sum2 += scores[index];
+  if (scores[index] > highScore) {
+    highScore = scores[index];
+  }
+  if (scores[index] < lowScore) {
+    lowScore = scores[index];
+  }
+  if (scores[index] >= 80) {
+    goodStudent += 1;
+  }
+}
+console.log(`평균 점수: ${sum2 / scores.length}점`);
+console.log(`최고 점수: ${highScore}점`);
+console.log(`최저 점수: ${lowScore}점`);
+console.log(`80점 이상: ${goodStudent}명`);
 
 // ═══ 문제 2 ═══ break 로 찾기 + 못 찾았을 때 [응용]
 // (1) 요구사항: 재고 배열에서 "처음으로 5개 미만인 상품"의 위치를 찾아 출력하세요.
@@ -116,8 +159,20 @@ const scores = [78, 92, 45, 88, 61, 95, 73];
 // (3) 힌트: 섹션13(break), 섹션09(for). 못 찾은 상태를 -1 로 두고 시작해 보세요.
 console.log("===== 문제 2 =====");
 const stocks = [12, 8, 3, 5, 0];
+// const stocks = [12, 8, 6, 7, 9]; // 확인용
 // TODO: 여기에 작성
-
+let foundIndex = -1;
+for (let index = 0; index < stocks.length; index++) {
+  if (stocks[index] < 5) {
+    foundIndex = index;
+    break;
+  }
+}
+if (foundIndex === -1) {
+  console.log(`전 품목 재고 충분`);
+} else {
+  console.log(`${foundIndex}번 상품 재고 부족`);
+}
 // ═══ 문제 3 ═══ 중첩 for + continue + break 함께 쓰기 [응용]
 // (1) 요구사항: 2단부터 5단까지 구구단을 출력하되, 아래 두 규칙을 적용하세요.
 //     - 홀수 단(3단, 5단)은 건너뜁니다 (continue 사용)
@@ -141,6 +196,17 @@ const stocks = [12, 8, 3, 5, 0];
 // (3) 힌트: 섹션11(중첩 for), 섹션13(break), 섹션14(continue), 8일차 섹션13(% 로 홀짝 판별)
 console.log("===== 문제 3 =====");
 // TODO: 여기에 작성
+for (let dan = 1; dan <= 5; dan++) {
+  if (dan % 2 == 1) {
+    continue;
+  }
+  for (let num = 1; num <= 9; num++) {
+    if (dan * num > 20) {
+      break;
+    }
+    console.log(`${dan} X ${num} = ${dan * num}`);
+  }
+}
 
 // ═══ 문제 4 ═══ while 로 "언제 끝날지 모르는" 반복 [응용]
 // (1) 요구사항: 통장에 50000원이 있고 매일 3500원씩 씁니다.
@@ -157,6 +223,24 @@ console.log("===== 문제 3 =====");
 //     조건이 거짓이 되는 순간 반복이 끝난다는 것을 이용하세요.
 console.log("===== 문제 4 =====");
 // TODO: 여기에 작성
+let totalPrice = 50000;
+let day_pr = 0;
+while (true) {
+  day_pr += 1;
+  totalPrice -= 3500;
+  if (totalPrice < 3500) break;
+}
+console.log(`버틴 일수: ${day_pr}일`);
+console.log(`남은 잔액: ${totalPrice}원`);
+totalPrice = 50000;
+day_pr = 0;
+while (true) {
+  day_pr += 1;
+  totalPrice -= 3500;
+  if (day_pr % 5 === 0) totalPrice -= 4000;
+  if (totalPrice < 3500) break;
+}
+console.log(`(커피 포함) 버틴 일수: ${day_pr}일`);
 
 // ═══ 문제 5 ═══ [도전] 중첩 for 로 모양 만들기
 // (1) 요구사항: 아래 모양을 중첩 for 로 출력하세요.
@@ -173,6 +257,24 @@ console.log("===== 문제 4 =====");
 //     안쪽 반복 횟수가 바깥 변수에 따라 달라진다는 점이 핵심입니다.
 console.log("===== 문제 5 =====");
 // TODO: 여기에 작성
+for (let outNum = 1; outNum <= 5; outNum++) {
+  let star = "";
+  for (let inNum = 1; inNum <= outNum; inNum++) {
+    star += "*";
+  }
+  console.log(star);
+}
+
+console.log("===== 문제 5-1 =====");
+for (let i = 1; i <= 5; i++) {
+  console.log("");
+  for (let j = 1; j >= 5 - i; j++) {
+    console.log(" ");
+  }
+  for (let j = i; j > 0; j--) {
+    console.log("*");
+  }
+}
 
 // ═══ 문제 6 ═══ [도전] 결과 예측하기 — 반복문의 함정
 // (1) 요구사항: 아래 네 덩어리가 각각 무엇을 출력할지 먼저 종이에 적으세요.
@@ -249,3 +351,24 @@ const orders = [
 // TODO: 여기에 작성
 
 // 다 풀었다면 99_연습문제_심화2_반복문까지_정답.js 와 비교해 보세요.
+let totalOrderCount = 0;
+let totalDonePrice = 0;
+let totalCancelCount = 0;
+let firstName;
+
+totalOrderCount = orders.length;
+console.log(`총 주문: ${totalOrderCount}건`);
+
+for (let index = 0; index < orders.length; index++) {
+  if (orders[index].status === "done") {
+    totalDonePrice += Number(orders[index].amount);
+  }
+  if (orders[index].status === "cancel") {
+    totalCancelCount++;
+  }
+  if (orders[index].amount > maxPrice) {
+    firstName = orders[index].customer;
+  }
+}
+console.log(`완료 금액 합계: ${totalDonePrice}원`);
+console.log(`취소: ${totalCancelCount}건`);

@@ -24,6 +24,13 @@
 console.log("===== 워밍업 A =====");
 const height = 152;
 // TODO: 여기에 작성
+const isTallEnough = height >= 140;
+console.log(isTallEnough);
+if (isTallEnough) {
+  console.log("탑승 가능");
+} else {
+  console.log("탑승 불가");
+}
 
 // ═══ 워밍업 B ═══ 두 조건을 && 로 묶기 [기본]
 // (1) 요구사항: 도서관 좌석 배정 조건입니다.
@@ -36,6 +43,11 @@ console.log("===== 워밍업 B =====");
 const isLibraryMember = true;
 const overdueCount = 2;
 // TODO: 여기에 작성
+if (isLibraryMember == true && overdueCount == 0) {
+  console.log(`좌석 배정 완료`);
+} else {
+  console.log(`좌석 배정 불가`);
+}
 
 // ═══ 워밍업 C ═══ else if 로 구간 나누기 [기본]
 // (1) 요구사항: 미세먼지 수치로 등급 한 줄을 출력하세요.
@@ -69,6 +81,13 @@ const isMember = false;
 const orderAmount = 52000;
 const hasCoupon = true;
 // TODO: 여기에 작성
+let isFreeShipping;
+if (isMember == true && (orderAmount >= 30000 || hasCoupon == true)) {
+  isFreeShipping = "무료배송";
+} else {
+  isFreeShipping = "배송비 3000원";
+}
+console.log(isFreeShipping);
 
 // ═══ 문제 2 ═══ else if 순서가 틀린 코드 고치기 [응용]
 // (1) 요구사항: 아래 배송 등급 판정은 "항상 일반 배송"만 출력됩니다.
@@ -86,6 +105,13 @@ const hasCoupon = true;
 console.log("===== 문제 2 =====");
 const deliveryCount = 63;
 // TODO: 여기에 작성
+if (deliveryCount >= 50) {
+  console.log("VIP 당일배송");
+} else if (deliveryCount >= 10) {
+  console.log("우수 고객 무료배송");
+} else if (deliveryCount >= 1) {
+  console.log("일반 배송");
+}
 
 // ═══ 문제 3 ═══ 중첩 펼치기 — 왜 안 되는지 알려주기 [응용]
 // (1) 요구사항: 아래 3중 중첩 코드는 결제가 실패해도 "아무것도 출력하지 않습니다".
@@ -110,6 +136,15 @@ const balance = 12000;
 const payAmount = 45000;
 const isCardValid = true;
 // TODO: 여기에 작성
+if (cardNumber) {
+  if (balance >= payAmount) {
+    if (isCardValid) {
+      console.log("결제 완료");
+    }
+  } else {
+    console.log("잔액이 부족합니다.");
+  }
+}
 
 // ═══ 문제 4 ═══ 입력값은 문자열이다 [응용]
 // (1) 요구사항: 화면 입력창에서 받은 값은 숫자를 쳐도 항상 문자열로 들어옵니다.
@@ -127,6 +162,9 @@ const isCardValid = true;
 console.log("===== 문제 4 =====");
 const inputAge = "22";
 // TODO: 여기에 작성
+console.log(typeof inputAge);
+console.log(inputAge >= 20);
+console.log(Number(inputAge) >= 20 ? "성인" : "미성년자");
 
 // ═══ 문제 5 ═══ [도전] switch 로 여러 값을 한 묶음으로
 // (1) 요구사항: 요일 코드(1=월 … 7=일)를 받아 "평일" 또는 "주말"을 출력합니다.
@@ -142,16 +180,34 @@ const inputAge = "22";
 console.log("===== 문제 5 =====");
 const dayCode = 7;
 // TODO: 여기에 작성
+switch (dayCode) {
+  case 1:
+  case 2:
+  case 3:
+  case 4:
+  case 5:
+    console.log("평일");
+    break;
+  case 6:
+  case 7:
+    console.log("주말");
+    break;
+}
 
 // ═══ 문제 6 ═══ [도전] 결과 예측하기 — 조건문의 함정 모음
 // (1) 요구사항: 아래 다섯 줄이 각각 무엇을 출력할지 먼저 종이에 적으세요.
 //     그다음 주석을 풀어 실행하고, 예상과 다른 줄은 이유를 설명해 보세요.
 //
-//       if ("0") console.log("A"); else console.log("B");
-//       if (0) console.log("C"); else console.log("D");
-//       if ("") console.log("E"); else console.log("F");
-//       console.log(5 > 3 > 1);
-//       let n = 5;  if (n = 3) console.log("G");  console.log(n);
+// if ("0") console.log("A");
+// else console.log("B");
+// if (0) console.log("C");
+// else console.log("D");
+// if ("") console.log("E");
+// else console.log("F");
+// console.log(5 > 3 > 1);
+// let n = 5;
+// if ((n = 3)) console.log("G");
+// console.log(n);
 //
 // (2) 기대 출력:
 //     A
@@ -165,6 +221,14 @@ const dayCode = 7;
 //     섹션03(= 하나는 비교가 아니라 할당)
 console.log("===== 문제 6 =====");
 // TODO: 위 다섯 줄의 주석을 풀어 실행하고, 예상과 다른 줄의 이유를 적어 보세요.
+console.log("1번 : 조건이 참이기 때문에 A 출력");
+console.log("2번 : 조건이 숫자0은 거짓이기 때문에 D 출력");
+console.log("3번 : 조건이 빈값이기 때문에 F 출력");
+console.log("4번 : 5>3은 true 이고, true>1은 거짓이기 때문에 false 출력");
+console.log(
+  "5번 : n을 5로 할당 후 다시 3으로 할당해주고, 조건이 3은 참이기 때문에 G 출력",
+);
+console.log("6번 : n이 재할당으로 3이 되었기 때문에 3 출력");
 
 // ═══ 문제 7 ═══ [도전] 종합 — 주문 객체로 배송비 계산
 // (1) 요구사항: order 객체 하나만 보고 네 줄을 출력하세요. (반복문·함수 없이)
@@ -195,6 +259,23 @@ const order = {
   ],
 };
 // TODO: 여기에 작성
+console.log(`주문 상품: ${order.items.length}개`);
+
+console.log(`마지막 담은 상품: ${order.items[order.items.length - 1].name}`);
+
+let totalPrice = 0;
+for (let index = 0; index < order.items.length; index++) {
+  totalPrice += order.items[index].price;
+}
+console.log(`총 주문 금액: ${totalPrice}원`);
+
+if (order.isRemote == true) {
+  console.log("추가 배송비 3000원");
+} else if (totalPrice >= 50000) {
+  console.log("무료배송");
+} else if (totalPrice >= 30000) {
+  console.log("배송비 2500원");
+}
 
 // ═══ 문제 8 ═══ [도전] 카페 스탬프 적립 — 값이 계속 바뀌는 상황
 // (1) 요구사항: 손님이 오늘 3잔을 주문했습니다. 아래 순서대로 여섯 줄을 출력하세요.
@@ -222,5 +303,18 @@ let stamp = 8;
 let visitCount = 24;
 const memberPhone = null;
 // TODO: 여기에 작성
+stamp += 3;
+visitCount += 1;
+console.log(`현재 스탬프: ${stamp}개`);
+console.log(`방문 횟수: ${visitCount}회`);
+if (stamp >= 10) {
+  console.log(`무료 음료 1잔 지급`);
+  stamp -= 10;
+}
+console.log(`남은 스탬프: ${stamp}개`);
+if (visitCount % 5 == 0) {
+  console.log(`단골 쿠폰 지급`);
+}
+memberPhone == true ? console.log(`SMS 발송`) : console.log(`전화번호 미등록`);
 
 // 다 풀었다면 99_연습문제_심화1_조건문까지_정답.js 와 비교해 보세요.
