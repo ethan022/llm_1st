@@ -31,6 +31,12 @@
 // (3) 힌트: 개념코드 섹션01(함수 선언문), 섹션02(return - 값을 밖으로 내보내기)
 console.log("===== 워밍업 A =====");
 // TODO: 여기에 작성
+function getCircleArea(r) {
+  const area = 3.14 * r ** 2;
+  return area;
+}
+console.log(getCircleArea(5));
+console.log(getCircleArea(10));
 
 // ═══ 워밍업 B ═══ 매개변수 두 개 + 기본값 [기본]
 // (1) 요구사항: 배송비를 계산하는 함수 getShippingFee 를 만드세요.
@@ -44,6 +50,19 @@ console.log("===== 워밍업 A =====");
 // (3) 힌트: 섹션03(매개변수와 인자 - 순서로 짝지어짐), 섹션04(기본 매개변수는 뒤쪽에)
 console.log("===== 워밍업 B =====");
 // TODO: 여기에 작성
+function getShippingFee(orderPrice, areaPrice = 0) {
+  let deliveryPrice = 0;
+  if (orderPrice >= 30000) {
+    deliveryPrice = 0 + areaPrice;
+    return deliveryPrice;
+  } else if (deliveryPrice < 30000) {
+    deliveryPrice = 3000 + areaPrice;
+    return deliveryPrice;
+  }
+}
+console.log(getShippingFee(50000));
+console.log(getShippingFee(20000));
+console.log(getShippingFee(20000, 3000));
 
 // ═══ 워밍업 C ═══ 세 가지 표기법으로 같은 함수 쓰기 [기본]
 // (1) 요구사항: "숫자를 두 배로 만드는" 함수를 세 가지 표기법으로 각각 만들고,
@@ -58,6 +77,22 @@ console.log("===== 워밍업 B =====");
 // (3) 힌트: 섹션05(함수 표현식 - 끝에 세미콜론), 섹션07(화살표 함수 축약 3단계)
 console.log("===== 워밍업 C =====");
 // TODO: 여기에 작성
+function double1(number) {
+  let a = number * 2;
+  return a;
+}
+console.log(double1(7));
+
+let double2 = function (number) {
+  let a = number * 2;
+  return a;
+};
+console.log(double2(7));
+
+let double3 = (number) => {
+  return number * 2;
+};
+console.log(double3(7));
 
 // ┌──────────────────────────────────────────────────────────┐
 // │ 여기부터 본 문제입니다.                                    │
@@ -84,6 +119,21 @@ console.log("===== 문제 1 =====");
 //      checkSignup("hong", "12345678", 12)
 //      checkSignup("hong", "12345678", 25)
 // TODO: 여기에 작성
+function checkSignup(id, password, age) {
+  if (id === "") {
+    return console.log(`아이디를 입력하세요`);
+  }
+  if (password.length < 8) {
+    return console.log(`비밀번호는 8자리 이상`);
+  }
+  if (age < 14) {
+    return console.log(`만 14세 이상만 가입 가능`);
+  }
+  return console.log(`가입 완료`);
+}
+checkSignup("hong", "1234", 20);
+checkSignup("hong", "12345678", 12);
+checkSignup("hong", "12345678", 25);
 
 // ═══ 문제 2 ═══ 함수를 인자로 넘기기 — 콜백 [응용]
 // (1) 요구사항: 배열의 각 요소에 어떤 처리를 할지 "부르는 쪽이 정하는" 구조를 만듭니다.
@@ -102,6 +152,22 @@ console.log("===== 문제 1 =====");
 console.log("===== 문제 2 =====");
 const fruits = ["사과", "바나나", "참외"];
 // TODO: 여기에 작성
+function runEach(arr, callback) {
+  for (let i = 0; i < arr.length; i++) {
+    callback(arr[i], i);
+  }
+}
+function printFruit(fruit, index) {
+  console.log(`${index + 1}번: ${fruit}`);
+}
+runEach(fruits, printFruit);
+
+function printLongFruit(fruit, index) {
+  if (fruit.length >= 3) {
+    console.log(`긴 이름: ${fruit}`);
+  }
+}
+runEach(fruits, printLongFruit);
 
 // ═══ 문제 3 ═══ 구조 분해로 짧게 쓰기 [응용]
 // (1) 요구사항: 아래 데이터를 구조 분해로 꺼내 세 줄을 출력하세요.
@@ -120,6 +186,8 @@ const coords = [37.5665, 126.978, 38];
 const book = { title: "어린 왕자", author: "생텍쥐페리", year: 1943 };
 const scores = [90, 85, 77, 92];
 // TODO: 여기에 작성
+const [lat, lng] = coords;
+console.log(`위도 ${lat} / 경도 ${lng}`);
 
 // ┌──────────────────────────────────────────────────────────┐
 // │ ⏱ 여기까지가 1교시 목표 분량입니다.                        │
