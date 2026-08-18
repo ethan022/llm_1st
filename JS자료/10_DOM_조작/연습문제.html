@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
@@ -69,14 +69,16 @@
     <h1>10단원 연습문제 — DOM 조작</h1>
 
     <p class="guide">
-      script 안의 TODO 자리에 코드를 쓰고 저장한 뒤, 브라우저를 <strong>새로고침</strong>
-      하세요. <strong>F12 → Console</strong> 도 함께 보세요.<br />
+      script 안의 TODO 자리에 코드를 쓰고 저장한 뒤, 브라우저를
+      <strong>새로고침</strong> 하세요. <strong>F12 → Console</strong> 도 함께
+      보세요.<br />
       1~12는 기본, 13은 응용, 14는 [도전], 15는 에러 확인입니다.
-    
+
       <br /><br />
       <strong>HTML 과 CSS 는 몰라도 됩니다.</strong> 이 파일 위쪽의
-      <code>&lt;style&gt;</code> 과 <code>&lt;body&gt;</code> 는 화면 모양을 만드는 코드입니다.
-      이 자료에서는 가르치지 않습니다. <code>&lt;script&gt;</code> 안부터 읽으세요.
+      <code>&lt;style&gt;</code> 과 <code>&lt;body&gt;</code> 는 화면 모양을
+      만드는 코드입니다. 이 자료에서는 가르치지 않습니다.
+      <code>&lt;script&gt;</code> 안부터 읽으세요.
     </p>
 
     <div class="demo">
@@ -130,14 +132,14 @@
       // 기대 결과 (콘솔):
       // <h2 id="mainTitle">원래 제목</h2>
 
-      // TODO: 여기에 코드를 쓰세요
+      console.log(document.querySelector("#mainTitle"));
 
       // ───── 문제 2 ───── (개념02 textContent)
       // id 가 target1 인 요소의 글자를 "바꿨습니다!" 로 바꾸세요.
       //
       // 기대 결과 (화면): 해당 줄이 "바꿨습니다!" 로 보입니다
 
-      // TODO: 여기에 코드를 쓰세요
+      document.querySelector("#target1").textContent = "바꿨습니다!";
 
       // ───── 문제 3 ───── (개념02 innerHTML)
       // id 가 target2 인 요소에 <strong>굵은 글자</strong> 를 넣어
@@ -146,7 +148,8 @@
       // 기대 결과 (화면): 그 줄이 "굵은 글자" 로 굵게 보입니다.
       //   <strong>굵은 글자</strong> 라는 글자가 그대로 보이면 textContent 를 쓴 것입니다.
       //
-      // TODO: 여기에 코드를 쓰세요
+      document.querySelector("#target2").innerHTML =
+        "<strong>굵은 글자</strong>";
 
       // ───── 문제 4 ───── (개념01 querySelectorAll)
       // 클래스가 item 인 요소를 모두 골라 items 라는 변수에 담고,
@@ -155,7 +158,8 @@
       //
       // 기대 결과 (콘솔): 3
 
-      // TODO: 여기에 코드를 쓰세요
+      const items = document.querySelectorAll(".item");
+      console.log(items.length);
 
       // ───── 문제 5 ───── (개념01 forEach)
       // 클래스가 item 인 요소들의 글자를 한 줄씩 콘솔에 찍으세요.
@@ -167,7 +171,9 @@
       // 항목 B
       // 항목 C
 
-      // TODO: 여기에 코드를 쓰세요
+      items.forEach((item) => {
+        console.log(item.textContent);
+      });
 
       // ───── 문제 6 ───── (개념03 style)
       // id 가 styleTarget 인 요소의 글자색을 흰색, 배경색을 "#2d6cdf" 로 바꾸세요.
@@ -176,7 +182,9 @@
       // 기대 결과 (화면): 그 줄이 파란 배경(#2d6cdf)에 흰 글자로 바뀝니다.
       //   아무 변화가 없으면 background-color 처럼 CSS 이름을 그대로 쓴 것입니다.
       //
-      // TODO: 여기에 코드를 쓰세요
+      const styleTarget = document.querySelector("#styleTarget");
+      styleTarget.style.color = "white";
+      styleTarget.style.backgroundColor = "#2d6cdf";
 
       // ───── 문제 7 ───── (개념03 classList)
       // id 가 classTarget 인 요소에 highlight 클래스를 붙이세요.
@@ -184,7 +192,8 @@
 
       // 기대 결과 (화면): 그 줄이 노란 배경 + 굵은 글씨가 됩니다.
       //
-      // TODO: 여기에 코드를 쓰세요
+      const classTarget = document.querySelector("#classTarget");
+      classTarget.classList.add("highlight");
 
       // ───── 문제 8 ───── (개념03 toggle)
       // id 가 toggleTarget 인 요소에 hidden 클래스를 toggle 로 붙여 숨기세요.
@@ -192,7 +201,9 @@
       //
       // 기대 결과 (콘솔): true
 
-      // TODO: 여기에 코드를 쓰세요
+      const toggleTarget = document.querySelector("#toggleTarget");
+      toggleTarget.classList.toggle("hidden");
+      console.log(toggleTarget.classList.contains("hidden"));
 
       // ───── 문제 9 ───── (개념04 createElement)
       // 아래 배열을 이용해 id 가 fruitList 인 ul 안에 li 를 만들어 붙이세요.
@@ -205,21 +216,31 @@
       // 2. 바나나
       // 3. 포도
 
-      // TODO: 여기에 코드를 쓰세요
+      const fruitList = document.querySelector("#fruitList");
+      fruits.forEach((fruit, index) => {
+        const li = document.createElement("li");
+        li.textContent = `${index + 1}. ${fruit}`;
+        fruitList.appendChild(li);
+      });
 
       // ───── 문제 10 ───── (개념04 클래스와 함께)
       // 아래 상품 배열로 id 가 cardArea 인 div 안에 카드를 만들어 붙이세요.
       // 각 카드는 div 이고 card 클래스를 가져야 하며,
       // 내용은 "아메리카노 4000원" 형태입니다.
 
+      // 기대 결과 (화면): 테두리가 있는 카드 두 개
+
       const products = [
         { name: "아메리카노", price: 4000 },
         { name: "케이크", price: 6000 },
       ];
-
-      // 기대 결과 (화면): 테두리가 있는 카드 두 개
-
-      // TODO: 여기에 코드를 쓰세요
+      const cardArea = document.querySelector("#cardArea");
+      products.forEach((product) => {
+        const card = document.createElement("div");
+        card.classList.add("card");
+        card.textContent = `${product.name} ${product.price}원`;
+        cardArea.appendChild(card);
+      });
 
       // ───── 문제 11 ───── (개념04 remove)
       // id 가 removeMe 인 요소를 화면에서 지우세요.
@@ -227,14 +248,16 @@
       // 기대 결과 (화면): "문제 11에서 사라집니다" 줄이 없어지고
       //   "남아 있는 항목" 하나만 남습니다.
       //
-      // TODO: 여기에 코드를 쓰세요
+      const removeMe = document.querySelector("#removeMe");
+      removeMe.remove();
 
       // ───── 문제 12 ───── (개념05 value)
       // id 가 nameInput 인 입력칸의 값을 콘솔에 찍으세요.
       //
       // 기대 결과 (콘솔): 이서연
 
-      // TODO: 여기에 코드를 쓰세요
+      const nameInput = document.querySelector("#nameInput");
+      console.log(nameInput.value);
 
       // ───── 문제 13 ───── [응용]
       // 이름칸·가격칸·개수칸·사이즈선택·얼음체크 다섯 곳의 값을 모두 읽어
@@ -251,7 +274,13 @@
       //
       // 기대 결과 (화면): 이서연님 / L 사이즈 / 18000원 / 얼음 추가
 
-      // TODO: 여기에 코드를 쓰세요
+      const price = Number(document.querySelector("#priceInput").value);
+      const count = Number(document.querySelector("#countInput").value);
+      const sizeSelect = document.querySelector("#sizeSelect").value;
+      const iceCheck = document.querySelector("#iceCheck").checked;
+      const total = price * count;
+      document.querySelector("#result").textContent =
+        `${nameInput.value}님 / ${sizeSelect} 사이즈 / ${total}원 / ${iceCheck ? "얼음 추가" : "얼음 없음"}`;
 
       // ───── 문제 14 ───── [도전]
       // 아래 배열에서 재고가 1개 이상인 상품만 골라
@@ -270,7 +299,15 @@
       // 라떼 (재고 5개)
       // 케이크 (재고 2개)
 
-      // TODO: 여기에 코드를 쓰세요
+      const challengeList = document.querySelector("#challengeList");
+
+      stockList
+        .filter(({ stock }) => stock >= 1)
+        .forEach(({ name, stock }) => {
+          const li = document.createElement("li");
+          li.textContent = `${name} (재고 ${stock}개)`;
+          challengeList.appendChild(li);
+        });
 
       // ───── 문제 15 ───── (에러 확인 — 맨 마지막)
       // 아래 두 줄의 주석을 풀고 새로고침해서 콘솔에 어떤 에러가 나는지 확인하세요.
