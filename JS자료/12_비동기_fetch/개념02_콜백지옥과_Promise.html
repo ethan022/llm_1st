@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
@@ -52,13 +52,14 @@
     <h1>개념 02 — 콜백 지옥과 Promise</h1>
 
     <p class="guide">
-      브라우저로 열고 <strong>F12 → Console</strong> 을 반드시 함께 보세요. 버튼을 누르면
-      단계마다 1초씩 걸립니다.
-    
+      브라우저로 열고 <strong>F12 → Console</strong> 을 반드시 함께 보세요.
+      버튼을 누르면 단계마다 1초씩 걸립니다.
+
       <br /><br />
       <strong>HTML 과 CSS 는 몰라도 됩니다.</strong> 이 파일 위쪽의
-      <code>&lt;style&gt;</code> 과 <code>&lt;body&gt;</code> 는 화면 모양을 만드는 코드입니다.
-      이 자료에서는 가르치지 않습니다. <code>&lt;script&gt;</code> 안부터 읽으세요.
+      <code>&lt;style&gt;</code> 과 <code>&lt;body&gt;</code> 는 화면 모양을
+      만드는 코드입니다. 이 자료에서는 가르치지 않습니다.
+      <code>&lt;script&gt;</code> 안부터 읽으세요.
     </p>
 
     <div class="demo">
@@ -267,9 +268,23 @@
       // ✏️ 직접 해보기 3 — then 을 하나 더 붙여, 받은 주문번호 뒤에 " (확인됨)" 을
       //                    이어붙인 뒤 화면(out2)에 넣어 보세요.
       //                    화면이 실제로 바뀌는지 눈으로 확인하는 것이 목적입니다.
+      orderP()
+        .then((no) => no + " (확인됨)")
+        .then((text) => {
+          out2.textContent = text;
+        });
 
       // ✏️ 직접 해보기 4 — orderP 의 setTimeout 시간을 1000 에서 3000 으로 바꿔 보세요.
       //                    ② 버튼을 눌렀을 때 각 단계가 언제 찍히는지 콘솔로 확인하세요.
+
+      function orderP() {
+        return new Promise((resolve) => {
+          setTimeout(() => {
+            console.log("주문번호 생성완료");
+            resolve("ORDER-001");
+          }, 3000);
+        });
+      }
 
       // ── 섹션 4: 실패 처리 — reject 와 catch ──
 
@@ -279,6 +294,26 @@
       //
       // reject 에 그냥 문자열을 넣지 않고 new Error(...) 를 넣는 이유는
       // 섹션 5에서 설명합니다. 지금은 "실패는 Error 로 알린다" 만 봐 두세요.
+
+      // function f1(n) {
+      //   console.log(`${n}번째 실행`);
+      // }
+
+      // function f2(n) {
+      //   return new Promise((resolve) => {
+      //     resolve(console.log(`${n}번째 실행`));
+      //   });
+      // }
+
+      // console.log("1번째 실행");
+      // f1(2);
+      // f2(3);
+      // f2(4).then((value) => {
+      //   console.log("value", value);
+      //   console.log("5번째 실행");
+      // });
+      // f1(6);
+      // console.log("7번째 실행");
 
       function riskyTask(shouldFail) {
         return new Promise((resolve, reject) => {
@@ -301,7 +336,7 @@
           })
           .catch((error) => {
             out3.textContent = `오류: ${error.message}`;
-            console.log("catch 에서 잡음:", error.message);
+            console.log("catch 에서 잡음:", `${error.message}`);
           })
           .finally(() => {
             console.log("성공하든 실패하든 여기는 실행됩니다");
