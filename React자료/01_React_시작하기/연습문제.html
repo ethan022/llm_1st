@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
@@ -98,18 +98,16 @@
 
     <p class="guide">
       아래 script 안의 <strong>TODO</strong> 자리에 코드를 쓰세요. 쓴 다음에는
-      <strong>저장(Ctrl+S) → 브라우저에서 F5</strong> 를 꼭 누르세요. 안 누르면 화면이 그대로라
-      틀린 줄 알게 됩니다.
-      <br /><br />
+      <strong>저장(Ctrl+S) → 브라우저에서 F5</strong> 를 꼭 누르세요. 안 누르면
+      화면이 그대로라 틀린 줄 알게 됩니다. <br /><br />
       1~10은 기본, 11은 [응용], 12는 [도전], 13은 에러 확인입니다.
-      <strong>F12 → Console</strong> 도 함께 여세요.
-      <br /><br />
-      <strong>HTML 과 CSS 는 몰라도 됩니다.</strong> 위쪽 <code>&lt;style&gt;</code> 과
-      <code>&lt;body&gt;</code> 는 화면 모양을 만드는 코드입니다.
-      <code>&lt;script type="text/babel"&gt;</code> 안부터 읽으세요.
-      <br /><br />
-      처음에는 아래 상자가 거의 다 비어 있습니다. <strong>정상입니다.</strong> 여러분이
-      채우는 것입니다.
+      <strong>F12 → Console</strong> 도 함께 여세요. <br /><br />
+      <strong>HTML 과 CSS 는 몰라도 됩니다.</strong> 위쪽
+      <code>&lt;style&gt;</code> 과 <code>&lt;body&gt;</code> 는 화면 모양을
+      만드는 코드입니다. <code>&lt;script type="text/babel"&gt;</code> 안부터
+      읽으세요. <br /><br />
+      처음에는 아래 상자가 거의 다 비어 있습니다.
+      <strong>정상입니다.</strong> 여러분이 채우는 것입니다.
     </p>
 
     <div class="demo">
@@ -164,7 +162,9 @@
       // 기대 결과 (화면): 문제 1 상자에 "안녕하세요" 가 굵고 큰 글씨로 보입니다.
       //                  아무것도 안 보이면 render 를 안 불렀거나 저장 후 F5 를 안 누른 것입니다.
       //                  콘솔에 Target container is not a DOM element 가 뜨면 id 를 틀린 것입니다.
-      // TODO: 여기에 코드를 쓰세요
+      ReactDOM.createRoot(document.querySelector("#q1")).render(
+        <h3>안녕하세요</h3>,
+      );
 
       // ───── 문제 2 ───── (개념02)
       // #q2 자리를 맡은 root 를 root2 라는 변수에 담고,
@@ -172,7 +172,8 @@
       // (문제 3에서 이 root2 를 다시 씁니다. 꼭 변수에 담아 두세요)
       //
       // 기대 결과 (화면): 문제 2~3 상자에 "아메리카노 4000원" 이 보입니다.
-      // TODO: 여기에 코드를 쓰세요
+      const root2 = ReactDOM.createRoot(document.querySelector("#q2"));
+      root2.render(<p>아메리카노 4000원</p>);
 
       // ───── 문제 3 ───── (개념03)
       // 문제 2에서 만든 root2 로 render 를 한 번 더 불러
@@ -183,7 +184,7 @@
       //                  두 줄이 다 보이면 새 자리에 따로 그린 것입니다.
       //                  콘솔에 createRoot() on a container that has already been passed
       //                  경고가 뜨면 createRoot 를 두 번 부른 것입니다.
-      // TODO: 여기에 코드를 쓰세요
+      root2.render(<p>라떼 4500원</p>);
 
       // ───── 문제 4 ───── (개념02)
       // 화면 설명을 함수로 묶어 보세요.
@@ -193,14 +194,19 @@
       // 기대 결과 (화면): 문제 4 상자에 "김민준님 환영합니다" 가 보입니다.
       //                  비어 있는데 콘솔도 조용하면, 함수 이름을 소문자로 썼거나
       //                  render 에 <App4 /> 가 아니라 App4 를 넣은 것입니다.
-      // TODO: 여기에 코드를 쓰세요
+      function App4() {
+        return <p>김민준님 환영합니다</p>;
+      }
+
+      const q4Root = ReactDOM.createRoot(document.querySelector("#q4"));
+      q4Root.render(<App4 />);
 
       // ───── 문제 5 ───── (개념02)
       // 지금 쓰고 있는 React 의 버전을 콘솔에 찍으세요.
       //
       // 기대 결과 (콘솔): 18.3.1
       //                  undefined 가 나오면 이름을 잘못 쓴 것입니다. 대소문자를 확인하세요.
-      // TODO: 여기에 코드를 쓰세요
+      console.log(React.version);
 
       // ───── 문제 6 ───── (개념04)
       // 코드를 쓰는 문제가 아닙니다. 콘솔을 읽는 문제입니다.
@@ -211,8 +217,11 @@
       //                       먼저 스스로 적어 본 다음 정답 파일과 맞춰 보세요.
       //                       빨간 줄이 보인다면 그것은 이 두 줄이 아닙니다. 문제 13을 보세요.
       // TODO: 여기에 답을 주석으로 적으세요
-      //   첫 줄:
-      //   둘째 줄:
+      //   첫 줄: Download the React DevTools for a better development experience: https://reactjs.org/link/react-devtools
+      //      뜻: 더 편하게 개발하려면 React DevTools를 설치해 보세요
+      //   둘째 줄: babel.min.js:3 You are using the in-browser Babel transformer. Be sure to precompile your scripts for production - https://babeljs.io/docs/setup/
+      //        뜻: 지금 브라우저 안에서 Babel이 JSX/최신 JavaScript 문법을 바로 변환하고 있습니다.
+      //            실제 서비스용 배포 환경에서는 이렇게 쓰지 말고 미리 변환해서 배포하세요.
 
       // ───── 문제 7 ───── (개념03)
       // "누르기" 버튼을 누를 때마다 #q7 자리의 숫자가 1씩 올라가게 하세요.
@@ -228,11 +237,20 @@
       // TODO: 여기에 코드를 쓰세요
       //   (화면 설명 함수는 아래 것을 그대로 쓰세요)
       //
-      //   let q7Count = 0;
-      //
-      //   function Q7Counter() {
-      //     return <p>눌린 횟수: {q7Count}</p>;
-      //   }
+      let q7Count = 0;
+
+      function Q7Counter() {
+        return <p>눌린 횟수: {q7Count}</p>;
+      }
+
+      const q7Root = ReactDOM.createRoot(document.querySelector("#q7"));
+      q7Root.render(<Q7Counter />);
+
+      document.querySelector("#q7Btn").addEventListener("click", () => {
+        q7Count = q7Count + 1;
+        q7Root.render(<Q7Counter />);
+        console.log(`눌린 횟수: ${q7Count}`);
+      });
 
       // ───── 문제 8 ───── (개념03)
       // #q8 자리의 초시계가 1초마다 올라가게 하세요.
@@ -261,7 +279,10 @@
       const q8Root = ReactDOM.createRoot(document.querySelector("#q8"));
       q8Root.render(<Q8Clock />);
 
-      // TODO: 여기에 setInterval 코드를 쓰세요
+      q8TimerId = setInterval(() => {
+        q8Seconds = q8Seconds + 1;
+        q8Root.render(<Q8Clock />);
+      }, 1000);
 
       // 멈춤 버튼은 미리 붙여 뒀습니다. q8TimerId 에 담기만 하면 동작합니다.
       document.querySelector("#q8StopBtn").addEventListener("click", () => {
@@ -279,7 +300,7 @@
       //                  커서 자리도 그대로입니다.
       //                  글자가 사라진다면 문제 8을 render 가 아닌 다른 방법으로 푼 것입니다.
       // TODO: 왜 글자가 남아 있는지 한 줄로 적으세요
-      //   답:
+      //   답: react는 달라진 부분만 고치기 때문임. input 내용이 달라진 게 없기 때문에 그대로 남아있음.
 
       // ───── 문제 10 ───── (개념04)
       // 아래 코드는 화면에 아무것도 그리지 않습니다.
@@ -289,14 +310,18 @@
       // 기대 결과 (화면): 문제 10 상자에 "케이크 6000원" 이 보입니다.
       //                  여전히 비어 있다면 이름을 한쪽만 고친 것입니다. 쓰는 곳도 함께 고쳐야 합니다.
 
-      function menu() {
+      // 첫 글자는 대문자로
+      function Menu() {
         return <p>케이크 6000원</p>;
       }
 
       const q10Root = ReactDOM.createRoot(document.querySelector("#q10"));
-      q10Root.render(<menu />);
+      q10Root.render(<Menu />);
 
-      // TODO: 위 두 군데를 고치세요
+      // React는 <menu />를 보고 menu가 소문자로 시작하네?
+      // 그럼 사용자가 만든 함수가 아니라 HTML 태그구나.
+      // 그래서 function menu()를 실행하지 않고,
+      // 실제 HTML 태그인 <menu>를 만들어서 #q10 안에 넣음
 
       // ───── 문제 11 ───── [응용] (개념03)
       // 문제 11 상자에 버튼이 두 개 있습니다. id 는 q11AmeBtn 과 q11LatteBtn 입니다.
@@ -312,7 +337,19 @@
       //                  "지금까지 2번 담았습니다. 마지막: 라떼" 가 됩니다.
       //                  횟수만 오르고 이름이 안 바뀌면 마지막 메뉴 변수를 안 고친 것입니다.
       //                  둘 다 안 바뀌면 render 를 다시 안 부른 것입니다.
-      // TODO: 여기에 코드를 쓰세요
+      let q11Count = 0;
+      let q11Last = "없음";
+
+      function Q11Cart() {
+        return (
+          <p>
+            지금까지 {q11Count}번 담았습니다. 마지막: {q11Last}
+          </p>
+        );
+      }
+
+      const q11Root = ReactDOM.createRoot(document.querySelector("#q11"));
+      q11Root.render(<Q11Cart />);
 
       // ───── 문제 12 ───── [도전] (개념03)
       // 같은 초시계를 React 없이 만들어 보고, 문제 8과 무엇이 다른지 확인하는 문제입니다.
