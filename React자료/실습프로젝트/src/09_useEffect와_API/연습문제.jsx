@@ -38,7 +38,9 @@ const BASE_URL = "https://jsonplaceholder.typicode.com";
 //                  한 줄도 안 나오면 useEffect 를 안 썼거나 함수를 안 넘긴 것입니다.
 
 function Problem01() {
-  // TODO: 여기에 useEffect 를 쓰세요 (의존성 배열을 잊지 마세요)
+  useEffect(() => {
+    console.log("09단원 시작합니다");
+  }, []);
 
   return (
     <div className="demo">
@@ -60,7 +62,10 @@ function Problem01() {
 function Problem02() {
   const [tick, setTick] = useState(0);
 
-  // TODO: 여기에 useEffect 를 쓰세요
+  useEffect(() => {
+    console.log("다시 그려졌습니다");
+    // 콘솔: 다시 그려졌습니다
+  });
 
   return (
     <div className="demo">
@@ -83,7 +88,11 @@ function Problem03() {
   const [count, setCount] = useState(0);
   const [menu, setMenu] = useState("아메리카노");
 
-  // TODO: 여기에 useEffect 를 쓰세요
+  useEffect(() => {
+    console.log("지금 잔 수: " + count);
+    // 콘솔: 지금 잔 수: 0
+    // 콘솔: 지금 잔 수: 1
+  }, [count]);
 
   return (
     <div className="demo">
@@ -92,7 +101,9 @@ function Problem03() {
         {menu} {count}잔
       </p>
       <button onClick={() => setCount(count + 1)}>잔 수 +1</button>
-      <button onClick={() => setMenu(menu === "아메리카노" ? "라떼" : "아메리카노")}>
+      <button
+        onClick={() => setMenu(menu === "아메리카노" ? "라떼" : "아메리카노")}
+      >
         메뉴 바꾸기
       </button>
     </div>
@@ -110,8 +121,9 @@ function Problem03() {
 function Problem04() {
   const [todoCount, setTodoCount] = useState(0);
 
-  // TODO: 여기에 useEffect 를 쓰세요
-
+  useEffect(() => {
+    document.title = `할일 ${todoCount}개`;
+  }, [todoCount]);
   return (
     <div className="demo">
       <h3>문제 4 — 탭 제목 바꾸기</h3>
@@ -136,12 +148,26 @@ function Problem04() {
 function Problem05() {
   const [seconds, setSeconds] = useState(0);
 
-  // TODO: 여기에 useEffect 를 쓰세요. 정리 함수도 함께 쓰세요.
+  useEffect(() => {
+    console.log("타이머를 켰습니다");
+    // 콘솔: 타이머를 켰습니다
+
+    const id = setInterval(() => {
+      setSeconds((prev) => prev + 1);
+    }, 1000);
+
+    return () => {
+      clearInterval(id);
+      console.log("타이머를 껐습니다");
+      // 콘솔: 타이머를 껐습니다
+    };
+  }, []);
 
   return (
     <div className="demo">
-      <h3>문제 5 — 타이머와 정리 함수</h3>
+      <h3>문제 5 · 6 — 타이머와 정리 함수</h3>
       <p className="output">{seconds}초</p>
+      {/* 화면: 0초 → 1초 → 2초 ... 1초마다 올라갑니다 */}
     </div>
   );
 }
@@ -172,8 +198,16 @@ function Problem05() {
 function Problem07() {
   const [title, setTitle] = useState("아직 못 받았습니다");
 
-  // TODO: 여기에 useEffect 를 쓰세요
-  //       안에 async 함수를 만들고, 만든 함수를 부르는 것을 잊지 마세요.
+  useEffect(() => {
+    async function fetchPost() {
+      const res = await fetch(`${BASE_URL}/posts/3`);
+      const data = await res.json();
+
+      setTitle(data.title);
+    }
+
+    fetchPost();
+  }, []);
 
   return (
     <div className="demo">
@@ -194,12 +228,24 @@ function Problem07() {
 function Problem08() {
   const [users, setUsers] = useState([]);
 
-  // TODO: 여기에 useEffect 를 쓰세요
+  useEffect(() => {
+    async function fetchUsers() {
+      const res = await fetch(`${BASE_URL}/users?_limit=3`);
+      const data = await res.json();
+
+      setUsers(data);
+    }
+    fetchUsers();
+  }, []);
 
   return (
     <div className="demo">
       <h3>문제 8 — 목록 받아서 그리기</h3>
-      <ul>{/* TODO: users 를 map 으로 그리세요 */}</ul>
+      <ul>
+        {users.map((user) => (
+          <li key={user.id}>{user.name}</li>
+        ))}
+      </ul>
     </div>
   );
 }
@@ -216,7 +262,18 @@ function Problem09() {
   const [title, setTitle] = useState("");
   const [loading, setLoading] = useState(true);
 
-  // TODO: 여기에 useEffect 를 쓰세요
+  useEffect(() => {
+    async function loadPost() {
+      const res = await fetch(`${BASE_URL}/
+        posts/3`);
+      const data = await res.json();
+
+      setTitle(data.title);
+      setLoading(false);
+    }
+
+    loadPost();
+  }, []);
 
   return (
     <div className="demo">
@@ -389,21 +446,23 @@ export default function Unit09Exercises() {
       <h1>09단원 연습문제 (14문항)</h1>
 
       <p className="guide">
-        각 상자의 <strong>TODO</strong> 자리를 채우세요. 저장하면 화면이 저절로 다시
-        그려집니다.
+        각 상자의 <strong>TODO</strong> 자리를 채우세요. 저장하면 화면이 저절로
+        다시 그려집니다.
         <br />
         <br />
-        <strong>F12 → Console</strong> 을 함께 열어 두세요. 콘솔로 확인하는 문제가 많습니다.
-        같은 줄이 두 번씩 찍히는 것은 정상입니다(개념02 StrictMode).
+        <strong>F12 → Console</strong> 을 함께 열어 두세요. 콘솔로 확인하는
+        문제가 많습니다. 같은 줄이 두 번씩 찍히는 것은 정상입니다(개념02
+        StrictMode).
         <br />
         <br />
-        7번부터는 <strong>인터넷 연결이 필요합니다.</strong> 막혀 있다면 실습프로젝트
-        폴더의 <code>index.html</code> 에서 <code>오프라인_대체.js</code> 줄을 감싼 주석만
-        지우세요.
+        7번부터는 <strong>인터넷 연결이 필요합니다.</strong> 막혀 있다면
+        실습프로젝트 폴더의 <code>index.html</code> 에서{" "}
+        <code>오프라인_대체.js</code> 줄을 감싼 주석만 지우세요.
         <br />
         <br />
         10 · 11번은 <strong>일부러 없는 글을 요청</strong>합니다. 콘솔에 빨간{" "}
-        <code>Failed to load resource ... 404</code> 줄이 나오는 것이 정상입니다.
+        <code>Failed to load resource ... 404</code> 줄이 나오는 것이
+        정상입니다.
       </p>
 
       <Problem01 />

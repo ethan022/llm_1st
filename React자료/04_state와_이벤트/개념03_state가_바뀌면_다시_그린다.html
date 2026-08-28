@@ -297,6 +297,7 @@
       // 자식에게 state 가 없어도 그렇습니다.
 
       function Child() {
+        const [x, setX] = useState(0);
         console.log("   └ Child 도 다시 실행되었습니다");
         // 콘솔:    └ Child 도 다시 실행되었습니다
 

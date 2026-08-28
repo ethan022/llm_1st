@@ -41,7 +41,9 @@ console.log(`전체 ${students.length}명`);
 // 기대 출력:
 // 김민준 총점 245
 
-// TODO: 여기에 코드를 쓰세요
+function getTotal(scores) {
+  return scores;
+}
 
 // ───── 문제 3 ───── 평균 구하는 함수
 // 점수 배열을 받아 평균을 돌려주는 getAverage 함수를 만드세요.

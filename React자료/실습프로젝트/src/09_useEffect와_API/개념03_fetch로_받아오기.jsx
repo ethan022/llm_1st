@@ -291,17 +291,17 @@ function FirstRenderDemo() {
   // 여기까지 왔다면 user 는 반드시 객체입니다. 마음 놓고 점을 찍어도 됩니다.
   return (
     <div className="demo">
-      <h3>④ 첫 렌더에는 데이터가 없다</h3>
-      <div className="output">
-        <p>이름: {user.name}</p>
-        <p>이메일: {user.email}</p>
-      </div>
-      {/* 화면: 이름: Leanne Graham / 이메일: Sincere@april.biz */}
-      <button onClick={() => setUser(null)}>받은 정보 지우기</button>
-      {/* 화면(누르면): 사용자 정보를 기다리는 중 — 첫 화면을 다시 볼 수 있습니다 */}
+      <h3>③ 첫 렌더에는 데이터가 없다</h3>
+      {user === null ? (
+        <p className="output">사용자 정보를 기다리는 중</p>
+      ) : (
+        <div className="output">
+          <p>이름: {user.name}</p>
+          <p>이메일: {user.email}</p>
+        </div>
+      )}
     </div>
   );
-}
 
 // 콘솔을 보면 "user 가 아직 null 인가?" 가 처음엔 true, 나중엔 false 로 바뀝니다.
 // 컴포넌트가 두 번 실행됐다는 뜻입니다. 데이터가 오기 전에 한 번, 온 뒤에 한 번.
@@ -355,6 +355,8 @@ function FirstRenderDemo() {
 
 // [실수 5] res.json() 앞에 await 를 빠뜨림
 // 이건 에러가 안 납니다. 조용히 아무것도 안 나옵니다. 그래서 아래에 실제로 돌려 둡니다.
+
+}
 
 function MissingAwaitDemo() {
   const [title, setTitle] = useState("아직 못 받았습니다");

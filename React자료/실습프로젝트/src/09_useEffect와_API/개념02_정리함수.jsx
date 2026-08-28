@@ -177,9 +177,7 @@ function SafeTimer() {
     };
   }, []);
 
-  return (
-    <p className="output">안전한 타이머: {count}번째 신호까지 받음</p>
-  );
+  return <p className="output">안전한 타이머: {count}번째 신호까지 받음</p>;
 }
 
 // [정리 함수가 없는 타이머] — 일부러 빠뜨렸습니다
@@ -194,7 +192,9 @@ function LeakyTimer() {
 
     const id = setInterval(() => {
       safety += 1;
-      console.log("[새는 타이머] " + safety + "번째 신호 — 화면에서 지워도 계속 나옵니다");
+      console.log(
+        "[새는 타이머] " + safety + "번째 신호 — 화면에서 지워도 계속 나옵니다",
+      );
       // 콘솔: [새는 타이머] 1번째 신호 — 화면에서 지워도 계속 나옵니다
 
       setCount(safety);
@@ -337,11 +337,11 @@ function SpeedTimerDemo() {
 
 function SubscribeDemo() {
   // 처음 값은 지금 창 너비로 시작합니다.
-  const [width, setWidth] = useState(window.innerWidth);
+  const [height, setHeight] = useState(window.innerHeight);
 
   useEffect(() => {
     function handleResize() {
-      setWidth(window.innerWidth);
+      setHeight(window.innerHeight);
     }
 
     window.addEventListener("resize", handleResize);
@@ -359,7 +359,7 @@ function SubscribeDemo() {
   return (
     <div className="demo">
       <h3>④ 창 크기 구독하기</h3>
-      <p className="output">지금 창 너비: {width}px</p>
+      <p className="output">지금 창 높이: {innerHeight}px</p>
       {/* 화면: 지금 창 너비: 1280px  ← 숫자는 여러분 창 크기에 따라 다릅니다 */}
     </div>
   );
@@ -416,14 +416,15 @@ export default function Concept02Cleanup() {
       <h1>개념 02 — 정리 함수</h1>
 
       <p className="guide">
-        <strong>F12 → Console</strong> 을 열고 보세요. 이 파일은 콘솔이 주인공입니다.
+        <strong>F12 → Console</strong> 을 열고 보세요. 이 파일은 콘솔이
+        주인공입니다.
         <br />
         <br />
-        콘솔에 같은 줄이 <strong>두 번씩</strong> 찍히는 이유를 이 파일에서 설명합니다.
-        먼저 섹션 1을 읽으세요.
+        콘솔에 같은 줄이 <strong>두 번씩</strong> 찍히는 이유를 이 파일에서
+        설명합니다. 먼저 섹션 1을 읽으세요.
         <br />
-        <br />이 파일의 타이머들은 <strong>6초 뒤 스스로 멈추게</strong> 해 두었습니다.
-        실습 중에 브라우저가 느려지지 않게 하려는 안전장치입니다.
+        <br />이 파일의 타이머들은 <strong>6초 뒤 스스로 멈추게</strong> 해
+        두었습니다. 실습 중에 브라우저가 느려지지 않게 하려는 안전장치입니다.
       </p>
 
       <StrictModeDemo />
